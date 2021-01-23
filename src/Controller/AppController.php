@@ -80,4 +80,9 @@ class AppController extends Controller
         // display,view,indexはログインをしなくても呼び出せる
         $this->Auth->allow(['display', 'view', 'index']);
     }
+
+    public function isAuthorized($user)
+{
+    return false;
+}
 }
