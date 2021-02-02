@@ -1,3 +1,4 @@
+<div class="users form large-5 medium-8 columns content">
 <h1>ユーザー新規登録</h1>
 <?= $this->Form->create() ?>
 <div>
@@ -10,8 +11,7 @@
 
 <div>
     <label for="password">パスワード</label>
-    <input type="password" name="password" id="password"
-    value="<?php if(!empty($_POST['password'])) {echo $_POST['password']; } ?>">
+    <input type="password" name="password" id="password">
 </div>
     
 
@@ -111,3 +111,4 @@ if(isset($_POST['company'])){
     <?= $this->Form->button('登録') ?>
 
 <?= $this->Form->end() ?>
+</div>
