@@ -69,8 +69,8 @@ if(isset($_POST['age'])){
 <?= $this->Form->radio(
         'gender',
         [
-        ['value' => '男' ,'text' => '男'],
-        ['value' => '女' ,'text' => '女']
+        ['value' => '1' ,'text' => '男'],
+        ['value' => '2' ,'text' => '女']
         ]); ?>
 
 
