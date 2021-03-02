@@ -10,5 +10,23 @@ class LangsTable extends Table
 {
     public function initialize(array $config)
     {
+        parent::initialize($config);
+
+        $this->setTable('langs');
+        $this->setDisplayField('id');
+        $this->setPrimaryKey('id');
+
+        $this->addBehavior('Timestamp');
+
+        $this->hasMany('Langs', [
+            'foreignKey' => 'user_id',
+        ]);
+    }
+
+public function view() {
+    // usersテーブルの1(status)データを配列取得    
+    $data = $this->Langs
+    ->find();
+    return $data;
     }
 }

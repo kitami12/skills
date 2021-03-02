@@ -10,5 +10,25 @@ class BusinessesTable extends Table
 {
     public function initialize(array $config)
     {
+        parent::initialize($config);
+
+        $this->setTable('businesses');
+        $this->setDisplayField('id');
+        $this->setPrimaryKey('id');
+
+        $this->addBehavior('Timestamp');
+
+        $this->belongsTo('Abilities');
+        $this->hasMany('Businesses', [
+            'foreignKey' => 'user_id',
+        ]);
+    }
+
+public function view() {
+    // usersテーブルの1(status)データを配列取得    
+    $data = $this->Businesses
+    ->find()
+    ->contain(['Abilities']);
+    return $data;
     }
 }
