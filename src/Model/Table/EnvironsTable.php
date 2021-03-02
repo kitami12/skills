@@ -25,7 +25,6 @@ class EnvironsTable extends Table
     }
 
 public function view() {
-    // usersテーブルの1(status)データを配列取得    
     $data = $this->Environs
     ->find()
     ->contain(['Abilities']);

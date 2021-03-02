@@ -25,7 +25,6 @@ class ProgrammingsTable extends Table
     }
 
 public function view() {
-    // usersテーブルの1(status)データを配列取得    
     $data = $this->Programmings
     ->find()
     ->contain(['Abilities']);
