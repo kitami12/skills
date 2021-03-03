@@ -39,18 +39,21 @@ class UsersTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
-      
-        $this->hasOne('Profiles');
-        $this->hasOne('Users');
+       
+        $this->hasMany('Profiles');
+        $this->hasMany('Softs');
+        $this->hasMany('Programmings');
+        $this->hasMany('Osses');
+        $this->hasMany('Langs');
+        $this->hasMany('Qualifications');
+        $this->hasMany('Performances');
+        $this->hasMany('Frees');
+        $this->hasMany('Businesses');
+        $this->hasMany('Environs');
+
         
     }
 
-    public function view($id = null) {
-        $data = $this->Users
-        ->find()
-        ->contain(['Profiles']);
-
-        return $data;
     }
 
     /**

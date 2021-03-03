@@ -13,17 +13,6 @@ class SkillSheetsController extends AppController
         $this->Auth->allow(['logout','add']);
         // ログインしなくてもlogoutとaddは表示できる
         $this->Users = TableRegistry::getTableLocator()->get('Users');
-        $this->Softs = TableRegistry::getTableLocator()->get('Softs');
-        $this->Programmings = TableRegistry::getTableLocator()->get('Programmings');
-        $this->Osses = TableRegistry::getTableLocator()->get('Osses');
-        $this->Langs = TableRegistry::getTableLocator()->get('Langs');
-        $this->Qualifications = TableRegistry::getTableLocator()->get('Qualifications');
-        $this->Performances = TableRegistry::getTableLocator()->get('Performances');
-        $this->Frees = TableRegistry::getTableLocator()->get('Frees');
-        $this->Environs = TableRegistry::getTableLocator()->get('Environs');
-        $this->Businesses = TableRegistry::getTableLocator()->get('Businesses');
-
-
     }
     public function index()
     {
@@ -31,23 +20,15 @@ class SkillSheetsController extends AppController
     }
 
     
-    public function view($user_id = null)
+    public function view($id = null)
     {
-        // $softs = $this->Softs->findById($user_id)->firstOrFail();
-        $users = $this->Users->view();
-        $softs = $this->Softs->view($user_id = null);
-        $programmings = $this->Programmings->view();
-        $osses = $this->Osses->view();
-        $langs = $this->Langs->view();
-        $qualifications = $this->Qualifications->view();
-        $performances = $this->Performances->view();
-        $frees = $this->Frees->view();
-        $environs = $this->Environs->view();
-        $businesses = $this->Businesses->view();
+        $users = $this->Users->get($id, [
+            'contain' => ['Profiles','Programmings','Osses','Softs','Langs',
+            'Qualifications','Performances','Frees','Environs','Businesses'],
+        ]);
 
-
-        $this->set(compact('users','softs','programmings','osses','langs',
-        'qualifications','performances','frees','environs','businesses'));
+        $this->set(compact('users'));
+        
     }
 
     public function add()
